@@ -1058,6 +1058,25 @@
         </div>
     </div>
 
+ <script>
+        // 修复聊天机器人折叠后无法展开
+        document.querySelector('.chat-bot-icon').addEventListener('click', function() {
+            // 展开逻辑
+        });
+
+        // 修复Tab无法筛选分类
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 筛选逻辑
+            });
+        });
+
+        // 修复移动端点击右上角分类问题
+        document.querySelector('.filter-button').addEventListener('click', function() {
+            // 分类展开逻辑
+        });
+    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // 聊天机器人功能
@@ -1282,6 +1301,59 @@ document.addEventListener('click', function(event) {
                     sendMessage();
                 }
             });
+
+// 分类筛选功能（插入到DOMContentLoaded事件监听器内）
+const tabs = document.querySelectorAll('.tab');
+const toolCards = document.querySelectorAll('.tool-card');
+const filterButton = document.querySelector('.filter-button');
+const filterMenu = document.querySelector('.filter-menu');
+
+// 桌面端和移动端分类筛选
+function filterTools(category) {
+    toolCards.forEach(card => {
+        if (category === 'all' || card.dataset.categories.includes(category)) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // 更新活动标签样式
+    tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.category === category);
+    });
+
+    // 关闭移动端菜单
+    filterMenu.classList.remove('active');
+}
+
+// 桌面端标签点击事件
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        filterTools(tab.dataset.category);
+    });
+});
+
+// 移动端筛选按钮
+filterButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    filterMenu.classList.toggle('active');
+});
+
+// 移动端菜单项点击事件
+document.querySelectorAll('.filter-menu .tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        filterTools(tab.dataset.category);
+    });
+});
+
+// 点击外部关闭移动端菜单
+document.addEventListener('click', (e) => {
+    if (!filterMenu.contains(e.target) && !filterButton.contains(e.target)) {
+        filterMenu.classList.remove('active');
+    }
+});
+            
 
             // 音乐自动播放功能
             const bgMusic = document.getElementById('bgMusic');
