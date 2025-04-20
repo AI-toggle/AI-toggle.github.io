@@ -556,7 +556,7 @@
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>AI工具导航</h1>
+            <h1>AI finder</h1>
             <p>探索改变未来的AI工具</p>
             <a href="#tools" class="hero-button">浏览工具</a>
         </div>
@@ -565,7 +565,7 @@
     <!-- 工具导航部分 -->
     <div id="tools" class="container">
         <div class="header">
-            <h1>AI工具导航</h1>
+            
             <p>发现和探索最新的AI工具</p>
         </div>
 
@@ -1068,30 +1068,31 @@
             const chatSend = document.querySelector('.chat-send');
             const chatBody = document.querySelector('.chat-bot-body');
             
-            // 显示/隐藏聊天机器人
-            chatBotIcon.addEventListener('click', function() {
-                chatBotContainer.classList.remove('chat-bot-hidden');
-                chatBotContainer.classList.remove('chat-bot-minimized');
-                chatBotIcon.style.display = 'none';
-                chatInput.focus();
-            });
-            
-            chatBotToggle.addEventListener('click', function() {
-                chatBotContainer.classList.add('chat-bot-minimized');
-                chatBotIcon.style.display = 'flex';
-            });
-            
-            // 确保聊天机器人图标在页面加载时可见
+            // 显示/隐藏聊天机器人（修复版）
+chatBotIcon.addEventListener('click', function() {
+    chatBotContainer.classList.remove('chat-bot-hidden', 'chat-bot-minimized');
+    chatBotIcon.style.display = 'none';
+    chatInput.focus();
+});
+
+chatBotToggle.addEventListener('click', function() {
+    chatBotContainer.classList.add('chat-bot-minimized');
+    chatBotIcon.style.display = 'flex';
+});
+
+// 确保初始状态正确
+chatBotIcon.style.display = 'flex';
+
+// 修复点击外部区域逻辑
+document.addEventListener('click', function(event) {
+    const isClickInside = chatBotContainer.contains(event.target) || chatBotIcon.contains(event.target);
+    if (!isClickInside) {
+        if (!chatBotContainer.classList.contains('chat-bot-minimized')) {
+            chatBotContainer.classList.add('chat-bot-minimized');
             chatBotIcon.style.display = 'flex';
-            
-            // 添加点击事件监听器到文档，用于处理点击外部区域
-            document.addEventListener('click', function(event) {
-                const isClickInside = chatBotContainer.contains(event.target) || chatBotIcon.contains(event.target);
-                if (!isClickInside && !chatBotContainer.classList.contains('chat-bot-hidden')) {
-                    chatBotContainer.classList.add('chat-bot-minimized');
-                    chatBotIcon.style.display = 'flex';
-                }
-            });
+        }
+    }
+});
             
             // 发送消息
             function sendMessage() {

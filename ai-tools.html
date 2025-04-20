@@ -176,13 +176,17 @@
         }
 
         .tool-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            margin-right: 15px;
-            object-fit: contain;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 12px;
         }
 
         .tool-card h3 {
@@ -518,6 +522,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 </head>
 <body>
+    <!-- 音频元素 -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="audio/bilibili-bg.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- 移动端分类筛选按钮 -->
     <div class="mobile-filter">
         <button class="filter-button">
@@ -547,7 +556,7 @@
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>AI工具导航</h1>
+            <h1>AI finder</h1>
             <p>探索改变未来的AI工具</p>
             <a href="#tools" class="hero-button">浏览工具</a>
         </div>
@@ -556,7 +565,7 @@
     <!-- 工具导航部分 -->
     <div id="tools" class="container">
         <div class="header">
-            <h1>AI工具导航</h1>
+            
             <p>发现和探索最新的AI工具</p>
         </div>
 
@@ -576,7 +585,7 @@
             <!-- 聊天对话类 -->
             <div class="tool-card" data-categories="chat">
                 <div class="tool-card-header">
-                    <img src="images/chatgpt-logo.svg" alt="ChatGPT" class="tool-icon">
+                    <div class="tool-icon">C</div>
                     <h3>ChatGPT</h3>
                 </div>
                 <p>OpenAI开发的大语言模型，支持自然对话和多种任务</p>
@@ -585,7 +594,7 @@
 
             <div class="tool-card" data-categories="chat">
                 <div class="tool-card-header">
-                    <img src="images/anthropic-logo.svg" alt="Claude" class="tool-icon">
+                    <div class="tool-icon">C</div>
                     <h3>Claude</h3>
                 </div>
                 <p>Anthropic开发的AI助手，擅长写作和分析</p>
@@ -594,7 +603,7 @@
 
             <div class="tool-card" data-categories="chat">
                 <div class="tool-card-header">
-                    <img src="images/bard-logo.png" alt="Bard" class="tool-icon">
+                    <div class="tool-icon">B</div>
                     <h3>Bard</h3>
                 </div>
                 <p>Google开发的AI助手，支持多语言对话</p>
@@ -603,7 +612,7 @@
 
             <div class="tool-card" data-categories="chat">
                 <div class="tool-card-header">
-                    <img src="images/baidu-logo.png" alt="文心一言" class="tool-icon">
+                    <div class="tool-icon">W</div>
                     <h3>文心一言</h3>
                 </div>
                 <p>百度开发的AI助手，中文理解能力强</p>
@@ -612,7 +621,7 @@
 
             <div class="tool-card" data-categories="chat">
                 <div class="tool-card-header">
-                    <img src="images/iflytek-logo.png" alt="讯飞星火" class="tool-icon">
+                    <div class="tool-icon">X</div>
                     <h3>讯飞星火</h3>
                 </div>
                 <p>科大讯飞开发的AI助手，中文交互体验好</p>
@@ -621,7 +630,7 @@
 
             <div class="tool-card" data-categories="chat">
                 <div class="tool-card-header">
-                    <img src="images/character-ai-logo.png" alt="Character.AI" class="tool-icon">
+                    <div class="tool-icon">C</div>
                     <h3>Character.AI</h3>
                 </div>
                 <p>可以创建和与AI角色对话的平台</p>
@@ -631,7 +640,7 @@
             <!-- 图像创作类 -->
             <div class="tool-card" data-categories="image">
                 <div class="tool-card-header">
-                    <img src="images/midjourney-logo.png" alt="Midjourney" class="tool-icon">
+                    <div class="tool-icon">M</div>
                     <h3>Midjourney</h3>
                 </div>
                 <p>强大的AI绘画工具，通过Discord使用</p>
@@ -640,7 +649,7 @@
 
             <div class="tool-card" data-categories="image">
                 <div class="tool-card-header">
-                    <img src="images/dalle-logo.png" alt="DALL·E 3" class="tool-icon">
+                    <div class="tool-icon">D</div>
                     <h3>DALL·E 3</h3>
                 </div>
                 <p>OpenAI开发的AI图像生成工具</p>
@@ -649,7 +658,7 @@
 
             <div class="tool-card" data-categories="image">
                 <div class="tool-card-header">
-                    <img src="images/stability-ai-logo.png" alt="Stable Diffusion" class="tool-icon">
+                    <div class="tool-icon">S</div>
                     <h3>Stable Diffusion</h3>
                 </div>
                 <p>开源的AI图像生成模型</p>
@@ -658,7 +667,7 @@
 
             <div class="tool-card" data-categories="image">
                 <div class="tool-card-header">
-                    <img src="images/canva-logo.png" alt="Canva AI" class="tool-icon">
+                    <div class="tool-icon">C</div>
                     <h3>Canva AI</h3>
                 </div>
                 <p>Canva推出的AI设计工具</p>
@@ -667,7 +676,7 @@
 
             <div class="tool-card" data-categories="image">
                 <div class="tool-card-header">
-                    <img src="images/adobe-logo.png" alt="Adobe Firefly" class="tool-icon">
+                    <div class="tool-icon">A</div>
                     <h3>Adobe Firefly</h3>
                 </div>
                 <p>Adobe的AI创意套件</p>
@@ -676,7 +685,7 @@
 
             <div class="tool-card" data-categories="image">
                 <div class="tool-card-header">
-                    <img src="images/leonardo-logo.jpg" alt="Leonardo.ai" class="tool-icon">
+                    <div class="tool-icon">L</div>
                     <h3>Leonardo.ai</h3>
                 </div>
                 <p>专业的AI图像生成平台</p>
@@ -686,7 +695,7 @@
             <!-- 视频制作类 -->
             <div class="tool-card" data-categories="video">
                 <div class="tool-card-header">
-                    <img src="images/runway-logo.png" alt="Runway" class="tool-icon">
+                    <div class="tool-icon">R</div>
                     <h3>Runway</h3>
                 </div>
                 <p>AI视频编辑和生成工具</p>
@@ -695,7 +704,7 @@
 
             <div class="tool-card" data-categories="video">
                 <div class="tool-card-header">
-                    <img src="images/d-id-logo.png" alt="D-ID" class="tool-icon">
+                    <div class="tool-icon">D</div>
                     <h3>D-ID</h3>
                 </div>
                 <p>AI数字人视频生成工具</p>
@@ -704,7 +713,7 @@
 
             <div class="tool-card" data-categories="video">
                 <div class="tool-card-header">
-                    <img src="images/synthesia-logo.png" alt="Synthesia" class="tool-icon">
+                    <div class="tool-icon">S</div>
                     <h3>Synthesia</h3>
                 </div>
                 <p>AI视频生成平台，支持多语言</p>
@@ -713,7 +722,7 @@
 
             <div class="tool-card" data-categories="video">
                 <div class="tool-card-header">
-                    <img src="images/descript-logo.png" alt="Descript" class="tool-icon">
+                    <div class="tool-icon">D</div>
                     <h3>Descript</h3>
                 </div>
                 <p>AI视频编辑和转录工具</p>
@@ -722,7 +731,7 @@
 
             <div class="tool-card" data-categories="video">
                 <div class="tool-card-header">
-                    <img src="images/heygen-logo.png" alt="HeyGen" class="tool-icon">
+                    <div class="tool-icon">H</div>
                     <h3>HeyGen</h3>
                 </div>
                 <p>AI数字人视频制作平台</p>
@@ -731,7 +740,7 @@
 
             <div class="tool-card" data-categories="video">
                 <div class="tool-card-header">
-                    <img src="images/kapwing-logo.png" alt="Kapwing" class="tool-icon">
+                    <div class="tool-icon">K</div>
                     <h3>Kapwing</h3>
                 </div>
                 <p>在线AI视频编辑工具</p>
@@ -741,7 +750,7 @@
             <!-- 编程开发类 -->
             <div class="tool-card" data-categories="code">
                 <div class="tool-card-header">
-                    <img src="images/github-logo.png" alt="GitHub Copilot" class="tool-icon">
+                    <div class="tool-icon">G</div>
                     <h3>GitHub Copilot</h3>
                 </div>
                 <p>AI编程助手，支持多种编程语言</p>
@@ -750,7 +759,7 @@
 
             <div class="tool-card" data-categories="code">
                 <div class="tool-card-header">
-                    <img src="images/cursor-logo.png" alt="Cursor" class="tool-icon">
+                    <div class="tool-icon">C</div>
                     <h3>Cursor</h3>
                 </div>
                 <p>基于AI的代码编辑器</p>
@@ -759,7 +768,7 @@
 
             <div class="tool-card" data-categories="code">
                 <div class="tool-card-header">
-                    <img src="images/aws-logo.png" alt="Amazon CodeWhisperer" class="tool-icon">
+                    <div class="tool-icon">A</div>
                     <h3>Amazon CodeWhisperer</h3>
                 </div>
                 <p>亚马逊的AI代码助手</p>
@@ -768,7 +777,7 @@
 
             <div class="tool-card" data-categories="code">
                 <div class="tool-card-header">
-                    <img src="images/tabnine-logo.png" alt="Tabnine" class="tool-icon">
+                    <div class="tool-icon">T</div>
                     <h3>Tabnine</h3>
                 </div>
                 <p>AI代码补全工具</p>
@@ -777,7 +786,7 @@
 
             <div class="tool-card" data-categories="code">
                 <div class="tool-card-header">
-                    <img src="images/replit-logo.png" alt="Replit Ghost" class="tool-icon">
+                    <div class="tool-icon">R</div>
                     <h3>Replit Ghost</h3>
                 </div>
                 <p>在线IDE中的AI编程助手</p>
@@ -786,7 +795,7 @@
 
             <div class="tool-card" data-categories="code">
                 <div class="tool-card-header">
-                    <img src="images/codeium-logo.png" alt="Codeium" class="tool-icon">
+                    <div class="tool-icon">C</div>
                     <h3>Codeium</h3>
                 </div>
                 <p>免费的AI代码助手</p>
@@ -796,7 +805,7 @@
             <!-- 音频处理类 -->
             <div class="tool-card" data-categories="audio">
                 <div class="tool-card-header">
-                    <img src="images/mubert-logo.png" alt="Mubert" class="tool-icon">
+                    <div class="tool-icon">M</div>
                     <h3>Mubert</h3>
                 </div>
                 <p>AI音乐生成工具</p>
@@ -805,7 +814,7 @@
 
             <div class="tool-card" data-categories="audio">
                 <div class="tool-card-header">
-                    <img src="images/elevenlabs-logo.png" alt="ElevenLabs" class="tool-icon">
+                    <div class="tool-icon">E</div>
                     <h3>ElevenLabs</h3>
                 </div>
                 <p>AI语音合成工具</p>
@@ -814,7 +823,7 @@
 
             <div class="tool-card" data-categories="audio">
                 <div class="tool-card-header">
-                    <img src="images/soundraw-logo.png" alt="Soundraw" class="tool-icon">
+                    <div class="tool-icon">S</div>
                     <h3>Soundraw</h3>
                 </div>
                 <p>AI音乐创作平台</p>
@@ -823,7 +832,7 @@
 
             <div class="tool-card" data-categories="audio">
                 <div class="tool-card-header">
-                    <img src="images/descript-logo.png" alt="Descript Audio" class="tool-icon">
+                    <div class="tool-icon">D</div>
                     <h3>Descript Audio</h3>
                 </div>
                 <p>AI音频编辑工具</p>
@@ -832,7 +841,7 @@
 
             <div class="tool-card" data-categories="audio">
                 <div class="tool-card-header">
-                    <img src="images/lalal-logo.png" alt="Lalal.ai" class="tool-icon">
+                    <div class="tool-icon">L</div>
                     <h3>Lalal.ai</h3>
                 </div>
                 <p>AI音频分离工具</p>
@@ -841,7 +850,7 @@
 
             <div class="tool-card" data-categories="audio">
                 <div class="tool-card-header">
-                    <img src="images/riffusion-logo.png" alt="Riffusion" class="tool-icon">
+                    <div class="tool-icon">R</div>
                     <h3>Riffusion</h3>
                 </div>
                 <p>AI音乐生成和编辑工具</p>
@@ -851,7 +860,7 @@
             <!-- 办公效率类 -->
             <div class="tool-card" data-categories="office">
                 <div class="tool-card-header">
-                    <img src="images/notion-logo.png" alt="Notion AI" class="tool-icon">
+                    <div class="tool-icon">N</div>
                     <h3>Notion AI</h3>
                 </div>
                 <p>Notion的AI写作助手</p>
@@ -860,7 +869,7 @@
 
             <div class="tool-card" data-categories="office">
                 <div class="tool-card-header">
-                    <img src="images/microsoft-logo.png" alt="Microsoft Copilot" class="tool-icon">
+                    <div class="tool-icon">M</div>
                     <h3>Microsoft Copilot</h3>
                 </div>
                 <p>微软Office套件的AI助手</p>
@@ -869,7 +878,7 @@
 
             <div class="tool-card" data-categories="office">
                 <div class="tool-card-header">
-                    <img src="images/grammarly-logo.png" alt="Grammarly" class="tool-icon">
+                    <div class="tool-icon">G</div>
                     <h3>Grammarly</h3>
                 </div>
                 <p>AI写作和语法检查工具</p>
@@ -878,7 +887,7 @@
 
             <div class="tool-card" data-categories="office">
                 <div class="tool-card-header">
-                    <img src="images/otter-logo.png" alt="Otter.ai" class="tool-icon">
+                    <div class="tool-icon">O</div>
                     <h3>Otter.ai</h3>
                 </div>
                 <p>AI会议记录和转录工具</p>
@@ -887,7 +896,7 @@
 
             <div class="tool-card" data-categories="office">
                 <div class="tool-card-header">
-                    <img src="images/fireflies-logo.png" alt="Fireflies.ai" class="tool-icon">
+                    <div class="tool-icon">F</div>
                     <h3>Fireflies.ai</h3>
                 </div>
                 <p>AI会议助手和记录工具</p>
@@ -896,7 +905,7 @@
 
             <div class="tool-card" data-categories="office">
                 <div class="tool-card-header">
-                    <img src="images/beautiful-logo.png" alt="Beautiful.ai" class="tool-icon">
+                    <div class="tool-icon">B</div>
                     <h3>Beautiful.ai</h3>
                 </div>
                 <p>AI驱动的演示文稿工具</p>
@@ -906,7 +915,7 @@
             <!-- 设计工具类 -->
             <div class="tool-card" data-categories="design">
                 <div class="tool-card-header">
-                    <img src="images/figma-logo.png" alt="Figma AI" class="tool-icon">
+                    <div class="tool-icon">F</div>
                     <h3>Figma AI</h3>
                 </div>
                 <p>Figma的AI设计助手</p>
@@ -915,7 +924,7 @@
 
             <div class="tool-card" data-categories="design">
                 <div class="tool-card-header">
-                    <img src="images/uizard-logo.png" alt="Uizard" class="tool-icon">
+                    <div class="tool-icon">U</div>
                     <h3>Uizard</h3>
                 </div>
                 <p>AI驱动的UI设计工具</p>
@@ -924,7 +933,7 @@
 
             <div class="tool-card" data-categories="design">
                 <div class="tool-card-header">
-                    <img src="images/looka-logo.png" alt="Looka" class="tool-icon">
+                    <div class="tool-icon">L</div>
                     <h3>Looka</h3>
                 </div>
                 <p>AI标志设计工具</p>
@@ -933,7 +942,7 @@
 
             <div class="tool-card" data-categories="design">
                 <div class="tool-card-header">
-                    <img src="images/khroma-logo.png" alt="Khroma" class="tool-icon">
+                    <div class="tool-icon">K</div>
                     <h3>Khroma</h3>
                 </div>
                 <p>AI配色方案生成器</p>
@@ -942,7 +951,7 @@
 
             <div class="tool-card" data-categories="design">
                 <div class="tool-card-header">
-                    <img src="images/fronty-logo.png" alt="Fronty" class="tool-icon">
+                    <div class="tool-icon">F</div>
                     <h3>Fronty</h3>
                 </div>
                 <p>AI网页设计工具</p>
@@ -951,7 +960,7 @@
 
             <div class="tool-card" data-categories="design">
                 <div class="tool-card-header">
-                    <img src="images/magician-logo.png" alt="Magician" class="tool-icon">
+                    <div class="tool-icon">M</div>
                     <h3>Magician</h3>
                 </div>
                 <p>Figma的AI设计插件</p>
@@ -961,7 +970,7 @@
             <!-- 研究分析类 -->
             <div class="tool-card" data-categories="research">
                 <div class="tool-card-header">
-                    <img src="images/elicit-logo.png" alt="Elicit" class="tool-icon">
+                    <div class="tool-icon">E</div>
                     <h3>Elicit</h3>
                 </div>
                 <p>AI研究助手</p>
@@ -970,7 +979,7 @@
 
             <div class="tool-card" data-categories="research">
                 <div class="tool-card-header">
-                    <img src="images/consensus-logo.png" alt="Consensus" class="tool-icon">
+                    <div class="tool-icon">C</div>
                     <h3>Consensus</h3>
                 </div>
                 <p>AI驱动的研究搜索引擎</p>
@@ -979,7 +988,7 @@
 
             <div class="tool-card" data-categories="research">
                 <div class="tool-card-header">
-                    <img src="images/scholarcy-logo.png" alt="Scholarcy" class="tool-icon">
+                    <div class="tool-icon">S</div>
                     <h3>Scholarcy</h3>
                 </div>
                 <p>AI文献综述工具</p>
@@ -988,7 +997,7 @@
 
             <div class="tool-card" data-categories="research">
                 <div class="tool-card-header">
-                    <img src="images/scite-logo.png" alt="Scite" class="tool-icon">
+                    <div class="tool-icon">S</div>
                     <h3>Scite</h3>
                 </div>
                 <p>AI驱动的文献引用分析工具</p>
@@ -997,7 +1006,7 @@
 
             <div class="tool-card" data-categories="research">
                 <div class="tool-card-header">
-                    <img src="images/connected-papers-logo.png" alt="Connected Papers" class="tool-icon">
+                    <div class="tool-icon">C</div>
                     <h3>Connected Papers</h3>
                 </div>
                 <p>AI文献关联分析工具</p>
@@ -1006,7 +1015,7 @@
 
             <div class="tool-card" data-categories="research">
                 <div class="tool-card-header">
-                    <img src="images/research-rabbit-logo.png" alt="Research Rabbit" class="tool-icon">
+                    <div class="tool-icon">R</div>
                     <h3>Research Rabbit</h3>
                 </div>
                 <p>AI研究文献管理工具</p>
@@ -1051,118 +1060,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 视频背景切换
-            const videos = [
-                'images/Runway Tools for human imagination .mp4',
-                'https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-network-connections-99786-large.mp4',
-                'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-data-flow-99785-large.mp4',
-                'https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-network-connections-99786-large.mp4',
-                'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-data-flow-99785-large.mp4'
-            ];
-            
-            let currentVideoIndex = 0;
-            const videoElement = document.getElementById('heroVideo');
-            
-            // 确保视频自动播放
-            function ensureAutoplay() {
-                const playPromise = videoElement.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(_ => {
-                        // 自动播放成功
-                        console.log("视频自动播放成功");
-                    })
-                    .catch(error => {
-                        // 自动播放失败，尝试静音播放
-                        console.log("自动播放失败，尝试静音播放");
-                        videoElement.muted = true;
-                        videoElement.play();
-                    });
-                }
-            }
-            
-            // 视频加载错误处理
-            videoElement.addEventListener('error', function(e) {
-                console.error('视频加载错误:', e);
-                // 尝试加载下一个视频
-                changeVideo();
-            });
-            
-            function changeVideo() {
-                currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-                videoElement.src = videos[currentVideoIndex];
-                // 确保新视频也能自动播放
-                ensureAutoplay();
-            }
-
-            // 初始确保视频播放
-            ensureAutoplay();
-            
-            // 每15秒切换一次视频
-            setInterval(changeVideo, 15000);
-
-            // 平滑滚动
-            document.querySelector('.hero-button').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector('#tools').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-
-            // 移动端分类筛选菜单
-            const filterButton = document.querySelector('.filter-button');
-            const filterMenu = document.querySelector('.filter-menu');
-            
-            filterButton.addEventListener('click', function() {
-                filterMenu.classList.toggle('active');
-            });
-            
-            // 点击页面其他地方关闭菜单
-            document.addEventListener('click', function(e) {
-                if (!filterButton.contains(e.target) && !filterMenu.contains(e.target)) {
-                    filterMenu.classList.remove('active');
-                }
-            });
-
-            // 标签切换脚本
-            const tabs = document.querySelectorAll('.tab');
-            const toolCards = document.querySelectorAll('.tool-card');
-
-            function filterByCategory(category) {
-                toolCards.forEach(card => {
-                    if (category === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        const cardCategories = card.dataset.categories.split(' ');
-                        if (cardCategories.includes(category)) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
-                });
-                
-                // 更新所有标签的状态
-                tabs.forEach(t => {
-                    if (t.dataset.category === category) {
-                        t.classList.add('active');
-                    } else {
-                        t.classList.remove('active');
-                    }
-                });
-            }
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const category = tab.dataset.category;
-                    filterByCategory(category);
-                    
-                    // 在移动端，选择后关闭菜单
-                    if (window.innerWidth <= 768) {
-                        filterMenu.classList.remove('active');
-                    }
-                });
-            });
-
             // 聊天机器人功能
             const chatBotIcon = document.querySelector('.chat-bot-icon');
             const chatBotContainer = document.querySelector('.chat-bot-container');
@@ -1171,85 +1068,31 @@
             const chatSend = document.querySelector('.chat-send');
             const chatBody = document.querySelector('.chat-bot-body');
             
-            // 工具数据
-            const toolsData = {
-                chat: [
-                    { name: 'ChatGPT', url: 'https://chat.openai.com', description: '强大的AI对话助手，可回答问题、创作内容、编程等' },
-                    { name: 'Claude', url: 'https://claude.ai', description: 'Anthropic开发的AI助手，擅长分析、写作和编程' },
-                    { name: 'Bard', url: 'https://bard.google.com', description: 'Google的AI助手，可回答问题、创作内容和编程' },
-                    { name: '文心一言', url: 'https://yiyan.baidu.com', description: '百度的AI助手，擅长中文对话和创作' },
-                    { name: '讯飞星火', url: 'https://xinghuo.xfyun.cn', description: '科大讯飞的AI助手，擅长中文对话和创作' },
-                    { name: 'Character.AI', url: 'https://character.ai', description: '可以与各种角色进行对话的AI平台' }
-                ],
-                image: [
-                    { name: 'Midjourney', url: 'https://www.midjourney.com', description: '强大的AI图像生成工具，可创建高质量艺术作品' },
-                    { name: 'DALL·E 3', url: 'https://openai.com/dall-e-3', description: 'OpenAI的图像生成模型，可创建逼真图像' },
-                    { name: 'Stable Diffusion', url: 'https://stability.ai', description: '开源的AI图像生成模型，可本地部署' },
-                    { name: 'Canva AI', url: 'https://www.canva.com', description: 'Canva的AI设计工具，可生成图像和设计' },
-                    { name: 'Adobe Firefly', url: 'https://firefly.adobe.com', description: 'Adobe的AI创意套件，可生成图像和设计' },
-                    { name: 'Leonardo.ai', url: 'https://leonardo.ai', description: 'AI图像生成平台，可创建各种风格的图像' }
-                ],
-                video: [
-                    { name: 'Runway', url: 'https://runway.ml', description: 'AI视频创作工具，可生成、编辑和增强视频' },
-                    { name: 'D-ID', url: 'https://www.d-id.com', description: 'AI数字人视频生成工具，可创建说话的头像' },
-                    { name: 'Synthesia', url: 'https://www.synthesia.io', description: 'AI视频生成平台，可创建数字人讲解视频' },
-                    { name: 'Descript', url: 'https://www.descript.com', description: 'AI视频编辑工具，可像编辑文档一样编辑视频' },
-                    { name: 'HeyGen', url: 'https://www.heygen.com', description: 'AI视频生成平台，可创建多语言数字人视频' },
-                    { name: 'Kapwing', url: 'https://www.kapwing.com', description: '在线视频编辑工具，提供AI辅助功能' }
-                ],
-                code: [
-                    { name: 'GitHub Copilot', url: 'https://github.com/features/copilot', description: 'AI编程助手，可实时提供代码建议' },
-                    { name: 'Cursor', url: 'https://cursor.sh', description: 'AI驱动的代码编辑器，可生成和解释代码' },
-                    { name: 'Amazon CodeWhisperer', url: 'https://aws.amazon.com/codewhisperer', description: 'AWS的AI编程助手，可提供代码建议' },
-                    { name: 'Tabnine', url: 'https://www.tabnine.com', description: 'AI代码补全工具，支持多种编程语言' },
-                    { name: 'Replit', url: 'https://replit.com', description: '在线IDE，提供AI辅助编程功能' },
-                    { name: 'Codeium', url: 'https://codeium.com', description: '免费的AI代码助手，可提供代码建议和补全' }
-                ],
-                audio: [
-                    { name: 'Mubert', url: 'https://mubert.com', description: 'AI音乐生成工具，可创建各种风格的音乐' },
-                    { name: 'ElevenLabs', url: 'https://elevenlabs.io', description: 'AI语音合成平台，可创建自然流畅的语音' },
-                    { name: 'Soundraw', url: 'https://soundraw.io', description: 'AI音乐生成工具，可创建适合视频的背景音乐' },
-                    { name: 'Lalal.ai', url: 'https://www.lalal.ai', description: 'AI音频分离工具，可从音乐中提取人声和乐器' },
-                    { name: 'Riffusion', url: 'https://www.riffusion.com', description: 'AI音乐生成工具，可通过文本描述创建音乐' }
-                ],
-                office: [
-                    { name: 'Notion AI', url: 'https://www.notion.so', description: 'Notion的AI助手，可帮助写作、总结和组织内容' },
-                    { name: 'Microsoft Copilot', url: 'https://www.microsoft.com/copilot', description: '微软的AI助手，集成在Office套件中' },
-                    { name: 'Grammarly', url: 'https://www.grammarly.com', description: 'AI写作助手，可检查语法和提供写作建议' },
-                    { name: 'Otter.ai', url: 'https://otter.ai', description: 'AI会议记录工具，可自动转录和总结会议内容' },
-                    { name: 'Fireflies.ai', url: 'https://fireflies.ai', description: 'AI会议助手，可记录、转录和总结会议' },
-                    { name: 'Beautiful.ai', url: 'https://www.beautiful.ai', description: 'AI演示工具，可自动创建美观的演示文稿' }
-                ],
-                design: [
-                    { name: 'Figma', url: 'https://www.figma.com', description: '设计工具，提供AI辅助功能' },
-                    { name: 'Uizard', url: 'https://uizard.io', description: 'AI设计工具，可通过文本描述创建UI设计' },
-                    { name: 'Looka', url: 'https://looka.com', description: 'AI标志设计工具，可创建专业标志' },
-                    { name: 'Khroma', url: 'https://khroma.co', description: 'AI色彩工具，可生成和谐的配色方案' },
-                    { name: 'Fronty', url: 'https://fronty.com', description: 'AI网页设计工具，可将图像转换为HTML/CSS' },
-                    { name: 'Magician', url: 'https://www.magician.design', description: 'Figma插件，提供AI设计辅助功能' }
-                ],
-                research: [
-                    { name: 'Elicit', url: 'https://elicit.org', description: 'AI研究助手，可帮助查找和分析研究论文' },
-                    { name: 'Consensus', url: 'https://consensus.app', description: 'AI研究搜索引擎，可查找科学证据' },
-                    { name: 'Scholarcy', url: 'https://www.scholarcy.com', description: 'AI论文摘要工具，可快速理解研究论文' },
-                    { name: 'Scite', url: 'https://scite.ai', description: 'AI研究工具，可查找论文引用和评价' },
-                    { name: 'Connected Papers', url: 'https://www.connectedpapers.com', description: 'AI研究工具，可发现相关研究论文' },
-                    { name: 'Research Rabbit', url: 'https://www.researchrabbit.ai', description: 'AI研究助手，可组织和发现研究论文' }
-                ]
-            };
-            
-            // 显示/隐藏聊天机器人
-            chatBotIcon.addEventListener('click', function() {
-                chatBotContainer.classList.remove('chat-bot-hidden');
-                chatBotContainer.classList.remove('chat-bot-minimized');
-                chatBotIcon.style.display = 'none';
-                chatInput.focus();
-            });
-            
-            chatBotToggle.addEventListener('click', function() {
-                chatBotContainer.classList.add('chat-bot-minimized');
-                chatBotIcon.style.display = 'flex';
-            });
+            // 显示/隐藏聊天机器人（修复版）
+chatBotIcon.addEventListener('click', function() {
+    chatBotContainer.classList.remove('chat-bot-hidden', 'chat-bot-minimized');
+    chatBotIcon.style.display = 'none';
+    chatInput.focus();
+});
+
+chatBotToggle.addEventListener('click', function() {
+    chatBotContainer.classList.add('chat-bot-minimized');
+    chatBotIcon.style.display = 'flex';
+});
+
+// 确保初始状态正确
+chatBotIcon.style.display = 'flex';
+
+// 修复点击外部区域逻辑
+document.addEventListener('click', function(event) {
+    const isClickInside = chatBotContainer.contains(event.target) || chatBotIcon.contains(event.target);
+    if (!isClickInside) {
+        if (!chatBotContainer.classList.contains('chat-bot-minimized')) {
+            chatBotContainer.classList.add('chat-bot-minimized');
+            chatBotIcon.style.display = 'flex';
+        }
+    }
+});
             
             // 发送消息
             function sendMessage() {
@@ -1439,6 +1282,35 @@
                     sendMessage();
                 }
             });
+
+            // 音乐自动播放功能
+            const bgMusic = document.getElementById('bgMusic');
+            
+            // 设置初始音量
+            bgMusic.volume = 0.5;
+            
+            // 确保音乐自动播放
+            function ensureAutoplay() {
+                const playPromise = bgMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        console.log("音乐自动播放成功");
+                    })
+                    .catch(error => {
+                        console.log("自动播放失败，需要用户交互");
+                    });
+                }
+            }
+            
+            // 用户交互时尝试播放
+            document.addEventListener('click', function() {
+                if (bgMusic.paused) {
+                    ensureAutoplay();
+                }
+            });
+            
+            // 初始尝试自动播放
+            ensureAutoplay();
         });
     </script>
 </body>
