@@ -19,15 +19,94 @@
             line-height: 1.6;
         }
 
+
+/* 模态框样式 */
+        .modal {
+            display: none; /* 初始隐藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8); /* 半透明背景 */
+            z-index: 1002;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff5e57;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-close:hover {
+            background: #ff0000;
+        }
+
+
+        .top-nav {
+            width: 100%;
+            background: black;
+            color: white;
+            text-align: right;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1001;
+        }
+
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            color: #00bcd4; /* 添加悬停效果 */
+        }
+
 .dynamic-banner {
             width: 100%;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            background: black;
             color: white;
             text-align: center;
             padding: 5px 0;
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             font-weight: 600;
             position: fixed;
+            opacity: 70%;
             top: 0;
             left: 0;
             z-index: 1000;
@@ -532,17 +611,147 @@
                 height: 50px;
             }
         }
+
+        /* 模态框样式 */
+        .modal {
+            display: none; /* 初始隐藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8); /* 半透明背景 */
+            z-index: 1002;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff5e57;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-close:hover {
+            background: #ff0000;
+        }
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 </head>
 <body>
+
+<!-- 模态框 -->
+    <div id="communityModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal"></button>
+            <img src="https://via.placeholder.com/600x400" alt="社群图片">
+        </div>
+    </div>
+
+    <script>
+        // 获取社群链接、模态框和关闭按钮元素
+        const communityLink = document.getElementById('communityLink');
+        const communityModal = document.getElementById('communityModal');
+        const closeModal = document.getElementById('closeModal');
+
+        // 点击社群链接时显示模态框
+        communityLink.addEventListener('click', function(event) {
+            event.preventDefault(); // 阻止默认跳转行为
+            communityModal.style.display = 'flex'; // 显示模态框
+        });
+
+        // 点击关闭按钮时隐藏模态框
+        closeModal.addEventListener('click', function() {
+            communityModal.style.display = 'none'; // 隐藏模态框
+        });
+
+        // 点击模态框外部区域时隐藏模态框
+        communityModal.addEventListener('click', function(event) {
+            if (event.target === communityModal) {
+                communityModal.style.display = 'none'; // 隐藏模态框
+            }
+        });
+    </script>
+
+
     <!-- 音频元素 -->
     <audio id="bgMusic" loop autoplay>
         <source src="audio/bilibili-bg.mp3" type="audio/mpeg">
     </audio>
 
+
+ 
+
+    <!-- 动态横幅 -->
     <div class="dynamic-banner">
         🎉 新增AI工具：<a href="https://chat.openai.com" target="_blank" style="color: #fff; text-decoration: underline;">ChatGPT</a>，快来体验吧！
+        <a id="communityLink" style="color: #fff;">加入社群</a>
+        
+    </div>
+
+    <!-- 模态框 -->
+    <div id="communityModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">×</button>
+            <img src="https://via.placeholder.com/300x300?text=QR+Code" alt="扫码加入社群">
+            <p style="margin-top: 15px; color: #333;">扫码加入我们的社群</p>
+        </div>
+    </div>
+
+    <script>
+        // 获取社群链接、模态框和关闭按钮元素
+        const communityLink = document.getElementById('communityLink');
+        const communityModal = document.getElementById('communityModal');
+        const closeModal = document.getElementById('closeModal');
+
+        // 点击社群链接时显示模态框
+        communityLink.addEventListener('click', function(event) {
+            event.preventDefault(); // 阻止默认行为
+            communityModal.style.display = 'flex'; // 显示模态框
+        });
+
+        // 点击关闭按钮时隐藏模态框
+        closeModal.addEventListener('click', function() {
+            communityModal.style.display = 'none'; // 隐藏模态框
+        });
+
+        // 点击模态框外部区域时隐藏模态框
+        communityModal.addEventListener('click', function(event) {
+            if (event.target === communityModal) {
+                communityModal.style.display = 'none'; // 隐藏模态框
+            }
+        });
+    </script>
+
+
+    
     </div>
 
     <!-- 移动端分类筛选按钮 -->
@@ -1076,7 +1285,47 @@
         </div>
     </div>
 
+
+
+
+
+
+<script>
+// 修复Tab无法筛选分类的问题
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        // 获取选定的分类
+        const selectedCategory = this.getAttribute('data-category');
+
+        // 移除所有Tab的active状态
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+        // 给当前点击的Tab添加active状态
+        this.classList.add('active');
+
+        // 筛选工具卡片
+        document.querySelectorAll('.tool-card').forEach(card => {
+            const categories = card.getAttribute('data-categories').split(' ');
+
+            // 如果是 "all"，显示所有卡片，否则根据分类匹配
+            if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
+                card.style.display = 'block'; // 显示
+            } else {
+                card.style.display = 'none'; // 隐藏
+            }
+        });
+    });
+});
+</script>
+
+
+
+
+
  <script>
+
+
+
 
 
 
@@ -1098,6 +1347,77 @@
             // 分类展开逻辑
         });
     </script>
+
+
+    <script>
+    // 定义 API 调用函数
+    async function sendMessageToAPI(message) {
+        try {
+            const response = await fetch('https://aip.baidubce.com/rpc/2.0/unit/bot/chat', { // 替换为 API 地址
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer bce-v3/ALTAK-8FRjmgilvuQDGvBdwo8qL/9724ecfd3b9c0399f86cbc02ff8911ec78175128'
+                },
+                body: JSON.stringify({ prompt: message })
+            });
+
+            if (!response.ok) {
+                throw new Error('API 请求失败');
+            }
+
+            const data = await response.json();
+            return data; // { text: "回复内容", recommendations: [{ name, description, url }] }
+        } catch (error) {
+            console.error('API 错误:', error);
+            return { text: '抱歉，无法获取回复，请稍后再试。', recommendations: [] };
+        }
+    }
+
+    // 定义工具推荐函数
+    function addToolRecommendation(name, description, url) {
+        const toolDiv = document.createElement('div');
+        toolDiv.classList.add('tool-recommendation');
+        toolDiv.innerHTML = `
+            <strong>${name}</strong><br />
+            ${description}<br />
+            <a href="${url}" target="_blank" style="color: #00f;">访问工具</a>
+        `;
+        chatBody.appendChild(toolDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    // 处理发送按钮点击事件
+    sendButton.addEventListener('click', async () => {
+        const userMessage = chatInput.value.trim();
+        if (!userMessage) return;
+
+        // 显示用户消息
+        addMessage('用户', userMessage);
+
+        // 清空输入框
+        chatInput.value = '';
+
+        // 调用 API 获取回复
+        const botReply = await sendMessageToAPI(userMessage);
+
+        // 显示机器人回复
+        addMessage('机器人', botReply.text);
+
+        // 如果有推荐工具，显示推荐工具
+        if (botReply.recommendations && botReply.recommendations.length > 0) {
+            botReply.recommendations.forEach(tool => {
+                addToolRecommendation(tool.name, tool.description, tool.url);
+            });
+        }
+    });
+</script>
+
+
+
+
+
+
 
     <script>
 
@@ -1181,6 +1501,9 @@
                 }, 500);
             }
             
+
+
+
             // 添加消息到聊天界面
             function addMessage(text, sender) {
                 const messageDiv = document.createElement('div');
