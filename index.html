@@ -1078,6 +1078,32 @@
     </script>
 
     <script>
+
+        document.querySelector('button').addEventListener('click', function() {
+    const audio = document.querySelector('audio');
+    audio.play();
+});
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatBotIcon = document.querySelector('.chat-bot-icon');
+            const chatBotContainer = document.querySelector('.chat-bot-container');
+            const chatBotToggle = document.querySelector('.chat-bot-toggle');
+
+            // 展开聊天机器人
+            chatBotIcon.addEventListener('click', function () {
+                chatBotContainer.style.display = 'block';
+                chatBotIcon.style.display = 'none';
+            });
+
+            // 折叠聊天机器人
+            chatBotToggle.addEventListener('click', function () {
+                chatBotContainer.style.display = 'none';
+                chatBotIcon.style.display = 'flex';
+            });
+        });
+
+
+
         document.addEventListener('DOMContentLoaded', function() {
             // 聊天机器人功能
             const chatBotIcon = document.querySelector('.chat-bot-icon');
@@ -1086,32 +1112,28 @@
             const chatInput = document.querySelector('.chat-input');
             const chatSend = document.querySelector('.chat-send');
             const chatBody = document.querySelector('.chat-bot-body');
-            
-            // 显示/隐藏聊天机器人（修复版）
-chatBotIcon.addEventListener('click', function() {
-    chatBotContainer.classList.remove('chat-bot-hidden', 'chat-bot-minimized');
-    chatBotIcon.style.display = 'none';
-    chatInput.focus();
-});
 
-chatBotToggle.addEventListener('click', function() {
-    chatBotContainer.classList.add('chat-bot-minimized');
-    chatBotIcon.style.display = 'flex';
-});
 
-// 确保初始状态正确
-chatBotIcon.style.display = 'flex';
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatBotIcon = document.querySelector('.chat-bot-icon');
+            const chatBotContainer = document.querySelector('.chat-bot-container');
+            const chatBotToggle = document.querySelector('.chat-bot-toggle');
 
-// 修复点击外部区域逻辑
-document.addEventListener('click', function(event) {
-    const isClickInside = chatBotContainer.contains(event.target) || chatBotIcon.contains(event.target);
-    if (!isClickInside) {
-        if (!chatBotContainer.classList.contains('chat-bot-minimized')) {
-            chatBotContainer.classList.add('chat-bot-minimized');
-            chatBotIcon.style.display = 'flex';
-        }
-    }
-});
+            // 显示聊天机器人
+            chatBotIcon.addEventListener('click', function () {
+                chatBotContainer.style.display = 'block';
+                chatBotIcon.style.display = 'none';
+            });
+
+            // 隐藏聊天机器人
+            chatBotToggle.addEventListener('click', function () {
+                chatBotContainer.style.display = 'none';
+                chatBotIcon.style.display = 'flex';
+            });
+        });
+    
+
+
             
             // 发送消息
             function sendMessage() {
@@ -1301,59 +1323,6 @@ document.addEventListener('click', function(event) {
                     sendMessage();
                 }
             });
-
-// 分类筛选功能（插入到DOMContentLoaded事件监听器内）
-const tabs = document.querySelectorAll('.tab');
-const toolCards = document.querySelectorAll('.tool-card');
-const filterButton = document.querySelector('.filter-button');
-const filterMenu = document.querySelector('.filter-menu');
-
-// 桌面端和移动端分类筛选
-function filterTools(category) {
-    toolCards.forEach(card => {
-        if (category === 'all' || card.dataset.categories.includes(category)) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-
-    // 更新活动标签样式
-    tabs.forEach(tab => {
-        tab.classList.toggle('active', tab.dataset.category === category);
-    });
-
-    // 关闭移动端菜单
-    filterMenu.classList.remove('active');
-}
-
-// 桌面端标签点击事件
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        filterTools(tab.dataset.category);
-    });
-});
-
-// 移动端筛选按钮
-filterButton.addEventListener('click', (e) => {
-    e.stopPropagation();
-    filterMenu.classList.toggle('active');
-});
-
-// 移动端菜单项点击事件
-document.querySelectorAll('.filter-menu .tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-        filterTools(tab.dataset.category);
-    });
-});
-
-// 点击外部关闭移动端菜单
-document.addEventListener('click', (e) => {
-    if (!filterMenu.contains(e.target) && !filterButton.contains(e.target)) {
-        filterMenu.classList.remove('active');
-    }
-});
-
 
             // 音乐自动播放功能
             const bgMusic = document.getElementById('bgMusic');
