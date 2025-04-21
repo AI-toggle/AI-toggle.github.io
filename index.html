@@ -19,6 +19,20 @@
             line-height: 1.6;
         }
 
+.dynamic-banner {
+            width: 100%;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
         /* 顶部视频展示区样式 */
         .hero-section {
             position: relative;
@@ -526,6 +540,10 @@
     <audio id="bgMusic" loop autoplay>
         <source src="audio/bilibili-bg.mp3" type="audio/mpeg">
     </audio>
+
+    <div class="dynamic-banner">
+        🎉 新增AI工具：<a href="https://chat.openai.com" target="_blank" style="color: #fff; text-decoration: underline;">ChatGPT</a>，快来体验吧！
+    </div>
 
     <!-- 移动端分类筛选按钮 -->
     <div class="mobile-filter">
@@ -1059,6 +1077,10 @@
     </div>
 
  <script>
+
+
+
+
         // 修复聊天机器人折叠后无法展开
         document.querySelector('.chat-bot-icon').addEventListener('click', function() {
             // 展开逻辑
