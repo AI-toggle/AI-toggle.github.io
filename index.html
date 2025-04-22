@@ -746,17 +746,31 @@
         <div class="hero-content">
             <h1>AI finder</h1>
             <p>探索改变未来的AI工具</p>
+        
+
             <a href="#tools" class="hero-button">浏览工具</a>
+
         </div>
     </section>
+    
+
+
+
+    <div id="node-graph" style="width: 100%; height: 500px;"></div>
+
+    
+
+
 
     <!-- 工具导航部分 -->
     <div id="tools" class="container">
         <div class="header">
             
-            <p>｜</p>
+           
         </div>
 
+
+        
         <div class="tabs">
             <button class="tab active" data-category="all">全部</button>
             <button class="tab" data-category="chat">聊天对话</button>
@@ -769,42 +783,76 @@
             <button class="tab" data-category="research">研究分析</button>
         </div>
 
-        <div id="node-graph" style="width: 100%; height: 800px;"></div>
+        
         
        
 
         <script>
             // 工具数据
+            // 工具数据
             const toolsData = [
                 // 聊天对话类
-                {id: "ChatGPT", category: "chat", x: 100, y: 100},
-                {id: "Claude", category: "chat", x: 200, y: 150},
+                {id: "ChatGPT", category: "chat", x: 10, y: 10},
+                {id: "Claude", category: "chat", x: 20, y: 10},
+                {id: "Perplexity", category: "chat", x: 30, y: 10},
+                {id: "Bard", category: "chat", x: 40, y: 10},
                 // 图像创作类
-                {id: "Midjourney", category: "image", x: 400, y: 100},
-                {id: "DALL·E 3", category: "image", x: 500, y: 150},
-                // 其他工具...
+                {id: "Midjourney", category: "image", x: 10, y: 30},
+                {id: "DALL·E 3", category: "image", x: 20, y: 30},
+                {id: "Stable Diffusion", category: "image", x: 30, y: 30},
+                {id: "Adobe Firefly", category: "image", x: 40, y: 30},
+                // 视频制作类
+                {id: "Sora", category: "video", x: 10, y: 50},
+                {id: "Runway", category: "video", x: 20, y: 50},
+                {id: "Synthesia", category: "video", x: 30, y: 50},
+                {id: "Descript", category: "video", x: 40, y: 50},
+                // 编程开发类
+                {id: "GitHub Copilot", category: "code", x: 10, y: 70},
+                {id: "Cursor", category: "code", x: 20, y: 70},
+                {id: "Tabnine", category: "code", x: 30, y: 70},
+                {id: "Replit Ghost", category: "code", x: 40, y: 70},
+                // 音频处理类
+                {id: "ElevenLabs", category: "audio", x: 10, y: 90},
+                {id: "Mubert", category: "audio", x: 20, y: 90},
+                {id: "Soundraw", category: "audio", x: 30, y: 90},
+                {id: "Lalal.ai", category: "audio", x: 40, y: 90},
+                // 办公效率类
+                {id: "Notion AI", category: "office", x: 10, y: 110},
+                {id: "Microsoft Copilot", category: "office", x: 20, y: 110},
+                {id: "Grammarly", category: "office", x: 30, y: 110},
+                {id: "Otter.ai", category: "office", x: 40, y: 110},
+                // 设计工具类
+                {id: "Figma AI", category: "design", x: 10, y: 130},
+                {id: "Uizard", category: "design", x: 20, y: 130},
+                {id: "Looka", category: "design", x: 30, y: 130},
+                {id: "Khroma", category: "design", x: 40, y: 130},
+                // 研究分析类
+                {id: "Elicit", category: "research", x: 10, y: 150},
+                {id: "Consensus", category: "research", x: 20, y: 150},
+                {id: "Scholarcy", category: "research", x: 30, y: 150},
+                {id: "Scite", category: "research", x: 40, y: 150}
             ];
-        
-            // 连线数据
-            const linksData = [
-                {source: "ChatGPT", target: "Claude"},
-                {source: "Midjourney", target: "DALL·E 3"},
-                {source: "ChatGPT", target: "Midjourney"},
-                
-                // 添加更多连线关系...
-            ];
+
+            // 连线数据 - 每个节点按顺序连接
+            const linksData = [];
+            for (let i = 0; i < toolsData.length - 1; i++) {
+                linksData.push({
+                    source: toolsData[i].id,
+                    target: toolsData[i + 1].id
+                });
+            }
         
             // 创建SVG画布
             const svg = d3.select("#node-graph")
                 .append("svg")
                 .attr("width", "100%")
-                .attr("height", "100%");
+                .attr("height", "400px");
         
             // 创建力导向图模拟器
             const simulation = d3.forceSimulation(toolsData)
                 .force("link", d3.forceLink(linksData).id(d => d.id).distance(100))
                 .force("charge", d3.forceManyBody().strength(-300))
-                .force("center", d3.forceCenter(window.innerWidth / 2, 400));
+                .force("center", d3.forceCenter(window.innerWidth / 2, 200));
         
             // 创建连线
             const link = svg.selectAll(".link")
@@ -1372,6 +1420,44 @@
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
         </svg>
     </div>
+
+    <div id="website-container" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000;">
+        <iframe id="website-frame" style="width: 100%; height: 100%; border: none;"></iframe>
+        <button id="close-website" style="position: absolute; top: 20px; right: 20px; background: #ff5e57; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">关闭</button>
+    </div>
+
+    <script>
+        // 获取所有工具链接
+        const toolLinks = document.querySelectorAll('.tool-link');
+        
+        // 为每个工具链接添加点击事件
+        toolLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // 阻止默认跳转行为
+                
+                // 获取目标URL
+                const url = this.href;
+                
+                // 设置iframe的src
+                document.getElementById('website-frame').src = url;
+                
+                // 显示网站容器
+                document.getElementById('website-container').style.display = 'block';
+            });
+        });
+    
+        // 关闭按钮点击事件
+        document.getElementById('close-website').addEventListener('click', function() {
+            // 隐藏网站容器
+            document.getElementById('website-container').style.display = 'none';
+            
+            // 清空iframe内容
+            document.getElementById('website-frame').src = '';
+        });
+    </script>
+
+
+
 
     <!-- 聊天机器人容器 -->
     <div class="chat-bot-container chat-bot-hidden">
